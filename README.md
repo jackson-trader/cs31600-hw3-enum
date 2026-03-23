@@ -1,2 +1,14 @@
-# cs31600-hw3-enum
-This is our homework 3 repository. Group 5
+# Homework 3: Enumeration Types
+CS 31600 - Group 5
+
+## Team Members
+- Jackson Trader
+- Jeremy Orozco
+- Aaron Lizardi
+
+## Languages
+- Java
+- Python
+
+## AI Use Disclosure
+[ for later use ]
