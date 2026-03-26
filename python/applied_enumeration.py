@@ -41,7 +41,7 @@ class MainApplication:
                     print(f"\n")
                 else:
 
-                    if(GameConstants.PLAYER + heal)
+                    if(GameConstants.PLAYER + heal):
 
 
 
@@ -50,3 +50,5 @@ if __name__ == "__main__":
     MainApplication.mainFunction()
     
 
+# https://www.geeksforgeeks.org/python/python-random-module/
+# https://docs.python.org/3/library/random.html
