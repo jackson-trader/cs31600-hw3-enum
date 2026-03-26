@@ -1,7 +1,7 @@
 from enum import Enum
 from random import random 
 
-class GameConstants:
+class GameConstants(Enum):
     PLAYER = 100
     COM = 100
 
@@ -42,8 +42,6 @@ class MainApplication:
                 else:
 
                     if(GameConstants.PLAYER + heal):
-
-
 
 
 if __name__ == "__main__":
