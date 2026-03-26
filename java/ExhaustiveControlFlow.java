@@ -30,7 +30,6 @@ class ExhaustiveControlFlow {
                 case GREEN:
                     System.out.println("GREEN");
                 default:
-
                     break;
             }
         }
