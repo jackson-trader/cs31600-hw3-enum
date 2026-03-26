@@ -24,14 +24,17 @@ class IterationIntrospection {
         //Random numbers
         Random dodgeNumber = new Random();
         Random comTurn = new Random();
-        Random damageChance = new Random(); //have to keep track of when the COM attacks
+        Random playerDamageChange = new Random();
         
+        //healing and dodge
         int heal = 20;
+        int dodgeToken = 0;
 
         int dodgeNum = dodgeNumber.nextInt(0, 2);
 
         System.out.println("Welcome to a short turn base and prepare battle against a COM");
-        
+
+        //start of the game loop
         while(true){
             System.out.println("Please type in 1, 2 or 3 to make your move: ");
             System.out.println("1 ATTACK");
@@ -43,15 +46,14 @@ class IterationIntrospection {
             System.out.println("Player Health: " + GameConstants.PLAYER.health);
             System.out.println("COM Health: " + GameConstants.COM.health);
 
-            //start of the turn
+            //start of the player turn
             int playerTurn = s.nextInt();
-            int computerTurn = comTurn.nextInt(1,3);
 
             if(playerTurn == 1){
-                int damgeRolled = damageChance.nextInt(10, 20);
-                GameConstants.COM.health -= damgeRolled;
+                int damageRolled = playerDamageChange.nextInt(10, 31);
+                GameConstants.COM.health -= damageRolled;
                 System.out.println();
-                System.out.println("You did " + damgeRolled + " damage \n");
+                System.out.println("You did " + damageRolled + " damage \n");
 
             } else if(playerTurn == 2){
 
@@ -68,13 +70,32 @@ class IterationIntrospection {
                     } else {
 
                         GameConstants.PLAYER.health += heal;
+                        System.out.println();
                         System.out.println("You healed " + heal + " health");
                     }
                 }
             
             } else if(playerTurn == 3) {
 
+                if(dodgeToken >= 1){
+                    System.out.println();
+                    System.out.println("You can only have one dodge token at a time");
+                } else {
+                    dodgeToken++;
+                    System.out.println();
+                    System.out.println("You have acquired a dodge token");
+                }
             }
+
+
+            //start of the COM Turn
+            int computerTurn = comTurn.nextInt(1,4);
+
+            if(computerTurn == 1){
+                damageRolled = playerDamageChange.nextInt(10, 31);
+            }
+
+
         }
     }
     /*
