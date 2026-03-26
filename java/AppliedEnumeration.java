@@ -5,7 +5,7 @@ class AppliedEnumeration {
     public static enum GameConstants {
 
         PLAYER("Player", 100),
-        COM("Computer", 10)
+        COM("Computer", 100)
         ;
 
         private String name;
