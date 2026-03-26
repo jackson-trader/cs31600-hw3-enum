@@ -5,7 +5,7 @@ class AppliedEnumeration {
     public static enum GameConstants {
 
         PLAYER("Player", 100),
-        COM("Computer", 100)
+        COM("Computer", 10)
         ;
 
         private String name;
@@ -21,24 +21,25 @@ class AppliedEnumeration {
         Scanner s = new Scanner(System.in);
 
         //Random numbers
-        Random dodgeNumber = new Random();
         Random comTurn = new Random();
-        Random playerDamageChange = new Random();
+        Random damageChance = new Random();
         
         //healing and dodge
         int heal = 20;
-        int dodgeToken = 0;
+        int playerDodgeToken = 0;
+        int comDodgeToken = 0;
 
-        int dodgeNum = dodgeNumber.nextInt(0, 2);
 
         System.out.println("Welcome to a short turn base and prepare battle against a COM");
 
         //start of the game loop
         while(true){
+            System.out.println("-------------------------------------------------------");
             System.out.println("Please type in 1, 2 or 3 to make your move: ");
             System.out.println("1 ATTACK");
             System.out.println("2 HEAL");
             System.out.println("3 DODGE");
+            System.out.println("-------------------------------------------------------");
 
             //showing Player Health and COM Health
             System.out.println();
@@ -49,40 +50,41 @@ class AppliedEnumeration {
             int playerTurn = s.nextInt();
 
             if(playerTurn == 1){
-                int damageRolled = playerDamageChange.nextInt(10, 31);
-                GameConstants.COM.health -= damageRolled;
+                int playerDamageRolled = damageChance.nextInt(10, 31);
+                GameConstants.COM.health -= playerDamageRolled;
+                System.out.println("You did " + playerDamageRolled + " damage");
                 System.out.println();
-                System.out.println("You did " + damageRolled + " damage \n");
 
             } else if(playerTurn == 2){
 
                 if(GameConstants.PLAYER.health >= 100){
+                    System.out.println("You cannot heal passed 100");
                     System.out.println();
-                    System.out.println("You cannot heal passed 100 \n");
                 } else {
 
                     if(GameConstants.PLAYER.health + heal >= 100){
 
                         GameConstants.PLAYER.health = 100;
-                        System.out.println();
                         System.out.println("You have healed to 100");
+                        System.out.println();
+
                     } else {
 
                         GameConstants.PLAYER.health += heal;
-                        System.out.println();
                         System.out.println("You healed " + heal + " health");
+                        System.out.println();
                     }
                 }
             
             } else if(playerTurn == 3) {
 
-                if(dodgeToken >= 1){
-                    System.out.println();
+                if(playerDodgeToken >= 1){
                     System.out.println("You can only have one dodge token at a time");
-                } else {
-                    dodgeToken++;
                     System.out.println();
+                } else {
+                    playerDodgeToken++;
                     System.out.println("You have acquired a dodge token");
+                    System.out.println();
                 }
             }
 
@@ -91,10 +93,50 @@ class AppliedEnumeration {
             int computerTurn = comTurn.nextInt(1,4);
 
             if(computerTurn == 1){
-                damageRolled = playerDamageChange.nextInt(10, 31);
+                int comDamageRolled = damageChance.nextInt(10, 31);
+                GameConstants.PLAYER.health -= comDamageRolled;
+                System.out.println("The COM did " + comDamageRolled + " damage \n");
+                System.out.println();
+
+            } else if(computerTurn == 2){
+
+                if(GameConstants.COM.health >= 100){
+                    System.out.println("You cannot heal passed 100 \n");
+                    System.out.println();
+                } else {
+
+                    if(GameConstants.COM.health + heal >= 100){
+
+                        GameConstants.COM.health = 100;
+                        System.out.println("The com has healed to 100");
+                        System.out.println();
+                    } else {
+
+                        GameConstants.COM.health += heal;
+                        System.out.println("The com has healed " + heal + " health");
+                        System.out.println();
+                    }
+                }
+            } else if(computerTurn == 3){
+
+                if(comDodgeToken >= 1){
+                    System.out.println("The com only have one dodge token at a time");
+                    System.out.println();
+                } else {
+                    comDodgeToken++;
+                    System.out.println("The com has acquired a dodge token");
+                    System.out.println();
+                }
             }
 
-
+            //checking to see if health reaches 0
+            if(GameConstants.COM.health <= 0){
+                System.out.println("You have won the game");
+                break;
+            } else if(GameConstants.PLAYER.health <= 0){
+                System.out.println("The COM has won");
+                break;
+            }
         }
     }
 
