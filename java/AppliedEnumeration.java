@@ -5,7 +5,7 @@ class AppliedEnumeration {
     public static enum GameConstants {
 
         PLAYER("Player", 100),
-        COM("Computer", 100)
+        COM("Computer", 10)
         ;
 
         private String name;
@@ -23,12 +23,18 @@ class AppliedEnumeration {
         //Random numbers
         Random comTurn = new Random();
         Random damageChance = new Random();
+        Random dodgeChacne = new Random();
         
         //healing and dodge
         int heal = 20;
         int playerDodgeToken = 0;
         int comDodgeToken = 0;
 
+        //damage negation
+        int damageNegated;
+        int playerDamageRolled;
+        int comDamageRolled;
+        int damgeDoneWithNegation;
 
         System.out.println("Welcome to a short turn base and prepare battle against a COM");
 
@@ -50,11 +56,30 @@ class AppliedEnumeration {
             int playerTurn = s.nextInt();
 
             if(playerTurn == 1){
-                int playerDamageRolled = damageChance.nextInt(10, 31);
-                GameConstants.COM.health -= playerDamageRolled;
-                System.out.println("You did " + playerDamageRolled + " damage");
-                System.out.println();
 
+                if(comDodgeToken >= 1) {
+
+                    damageNegated = dodgeChacne.nextInt(10, 20);
+                    playerDamageRolled = damageChance.nextInt(10,31);
+
+                    if(damageNegated >= playerDamageRolled){
+
+                        System.out.println("The COM took no damage because of his dodge token");
+                        comDodgeToken = 0;
+                    } else {
+
+                        damgeDoneWithNegation = Math.abs(damageNegated - playerDamageRolled);
+                        System.out.println("The COM rolled a " + damageNegated + " damaged negation " + "you did " + damgeDoneWithNegation);
+                        GameConstants.COM.health -= damgeDoneWithNegation;
+                        comDodgeToken = 0;
+                    }
+                } else {
+
+                    playerDamageRolled = damageChance.nextInt(10, 31);
+                    GameConstants.COM.health -= playerDamageRolled;
+                    System.out.println("You did " + playerDamageRolled + " damage");
+                    System.out.println();
+                }
             } else if(playerTurn == 2){
 
                 if(GameConstants.PLAYER.health >= 100){
@@ -93,10 +118,29 @@ class AppliedEnumeration {
             int computerTurn = comTurn.nextInt(1,4);
 
             if(computerTurn == 1){
-                int comDamageRolled = damageChance.nextInt(10, 31);
-                GameConstants.PLAYER.health -= comDamageRolled;
-                System.out.println("The COM did " + comDamageRolled + " damage \n");
-                System.out.println();
+
+                if(playerDodgeToken >= 1){
+                    damageNegated = dodgeChacne.nextInt(10, 20);
+                    comDamageRolled = damageChance.nextInt(10, 31);
+
+                    if(damageNegated >= comDamageRolled){
+
+                        System.out.println("The Player took no damage because of his dodge token");
+                        playerDodgeToken = 0;
+                    } else {
+
+                        damgeDoneWithNegation = Math.abs(damageNegated - comDamageRolled);
+                        System.out.println("The Player rolled a " + damageNegated + " damaged negation " + "COM did " + damgeDoneWithNegation);
+                        GameConstants.PLAYER.health -= damgeDoneWithNegation;
+                        playerDodgeToken = 0;
+                    }
+                } else {
+
+                    comDamageRolled = damageChance.nextInt(10, 31);
+                    GameConstants.PLAYER.health -= comDamageRolled;
+                    System.out.println("The COM did " + comDamageRolled + " damage \n");
+                    System.out.println();
+                }
 
             } else if(computerTurn == 2){
 
