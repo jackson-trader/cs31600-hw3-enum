@@ -1,31 +1,26 @@
 from enum import Enum
 
-class Color(Enum):
-    Red = 1
-    Green = 2
-    Blue = 3
+class Light(Enum):
+    RED = 1
+    YELLOW = 2
+    GREEN = 3
+    BLUE = 4
 
-class MainApplication:
-    def mainFunction():
-        colorList = []
-
-        colorList.append(Color.Red)
-        colorList.append(Color.Green)
-        #colorList.append(Color.Blue)
-
-        #colorList.append(Color.Yellow)
-
-        for i in colorList:
-
-            if(i == Color.Red):
-                print("Red")
-            elif(i == Color.Green):
-                print("Green")
-            elif(i == Color.Blue):
-                print("Blue")
-
+for i in Light:
+    if i == Light.RED:
+        print("Stop")
+    if i == Light.YELLOW:
+        print("Yield")
+    if i == Light.GREEN:
+        print("Go")
+    
+    
 if __name__ == "__main__":
-    MainApplication.mainFunction()
+    pass
+
+    '''
+    Since BLUE is never intentionally omitted in our version of switch/case, nothing will happen, since it's still a valid member of Light.
+    '''
 
 
 # https://docs.python.org/3/howto/enum.html
