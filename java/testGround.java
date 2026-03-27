@@ -22,14 +22,8 @@ public class testGround {
             System.out.println(this.gradePercent);
         }
     }
-
-
     public static void main(String[] args) {
-
         Grade g = Grade.A;
-
         g.whatIsYourGrade();
-        
     }
-    
 }

@@ -15,8 +15,6 @@ class Grades(Enum):
     D = 4
     F = 5
 
-    
-
     def whatIsYourgrade(self):
         print(f'', self.value)
 
