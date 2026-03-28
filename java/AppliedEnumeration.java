@@ -36,7 +36,7 @@ class AppliedEnumeration {
         int comDamageRolled;
         int damgeDoneWithNegation;
 
-        System.out.println("Welcome to a short turn base and prepare battle against a COM");
+        System.out.println("Welcome to a short turn base, prepare to battle against a COM");
 
         //start of the game loop
         while(true){
@@ -65,11 +65,13 @@ class AppliedEnumeration {
                     if(damageNegated >= playerDamageRolled){
 
                         System.out.println("The COM took no damage because of his dodge token");
+                        System.out.println();
                         comDodgeToken = 0;
                     } else {
 
                         damgeDoneWithNegation = Math.abs(damageNegated - playerDamageRolled);
                         System.out.println("The COM rolled a " + damageNegated + " damaged negation " + "you did " + damgeDoneWithNegation);
+                        System.out.println();
                         GameConstants.COM.health -= damgeDoneWithNegation;
                         comDodgeToken = 0;
                     }
@@ -126,11 +128,13 @@ class AppliedEnumeration {
                     if(damageNegated >= comDamageRolled){
 
                         System.out.println("The Player took no damage because of his dodge token");
+                        System.out.println();
                         playerDodgeToken = 0;
                     } else {
 
                         damgeDoneWithNegation = Math.abs(damageNegated - comDamageRolled);
                         System.out.println("The Player rolled a " + damageNegated + " damaged negation " + "COM did " + damgeDoneWithNegation);
+                        System.out.println();
                         GameConstants.PLAYER.health -= damgeDoneWithNegation;
                         playerDodgeToken = 0;
                     }
@@ -152,23 +156,23 @@ class AppliedEnumeration {
                     if(GameConstants.COM.health + heal >= 100){
 
                         GameConstants.COM.health = 100;
-                        System.out.println("The com has healed to 100");
+                        System.out.println("The COM has healed to 100");
                         System.out.println();
                     } else {
 
                         GameConstants.COM.health += heal;
-                        System.out.println("The com has healed " + heal + " health");
+                        System.out.println("The COM has healed " + heal + " health");
                         System.out.println();
                     }
                 }
             } else if(computerTurn == 3){
 
                 if(comDodgeToken >= 1){
-                    System.out.println("The com only have one dodge token at a time");
+                    System.out.println("The COM can only have one dodge token at a time");
                     System.out.println();
                 } else {
                     comDodgeToken++;
-                    System.out.println("The com has acquired a dodge token");
+                    System.out.println("The COM has acquired a dodge token");
                     System.out.println();
                 }
             }
