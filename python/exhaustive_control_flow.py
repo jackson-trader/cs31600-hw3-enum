@@ -19,7 +19,7 @@ if __name__ == "__main__":
     pass
 
     '''
-    Since BLUE is never intentionally omitted in our version of switch/case, nothing will happen, since it's still a valid member of Light.
+    BLUE was added to the Light enum, but isn't considered a variant in our version of switch/match statement, so it continues running silently.
     '''
 
 
