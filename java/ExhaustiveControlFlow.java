@@ -3,7 +3,10 @@ import java.util.ArrayList;
 class ExhaustiveControlFlow {
 
     public static enum color {
-        RED, GREEN, BLUE
+        RED,
+        GREEN,
+        BLUE,
+        YELLOW, // YELLOW is the new variant
     }
     public static void main(String[] args) {
 
@@ -17,9 +20,10 @@ class ExhaustiveControlFlow {
         colorList.add(color.RED);
         colorList.add(color.BLUE);
         colorList.add(color.GREEN);
+        colorList.add(color.YELLOW);
 
+        // YELLOW is intentionally left out of switch statement
         for(int i = 0; i < colorList.size(); i++){
-            
             switch (colorList.get(i)) {
                 case RED:
                     System.out.println("RED");
@@ -29,12 +33,14 @@ class ExhaustiveControlFlow {
                     break;
                 case GREEN:
                     System.out.println("GREEN");
+                    break;
                 default:
                     break;
             }
         }
 
-        //colorList.add(color.YELLOW);
+        // Continues to run silently, ignoring YELLOW because it's not in the switch statement, reaches default.
+        // No errors and no warnings.
 
         /*
         https://stackoverflow.com/questions/9850525/whats-the-use-of-enum-in-java

@@ -5,8 +5,7 @@ class IterationIntrospection
       MERCURY(3.7),
       VENUS(8.87),
       EARTH(9.81),
-      // Not actually 9.81, it's 3.71 (for Mars), but this is just for the Beyond Normal Usage
-      MARS(9.81),
+      MARS(9.81), // Not actually 9.81, it's 3.71, but this is just for the Beyond Normal Usage
       JUPITER(24.79),
       SATURN(10.44),
       URANUS(8.69),
