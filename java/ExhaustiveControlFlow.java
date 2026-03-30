@@ -10,11 +10,6 @@ class ExhaustiveControlFlow {
     }
     public static void main(String[] args) {
 
-
-        //create a switch statement 
-        //ask the user to pick a number between 1 and 3
-        //if the user picks that number
-
         ArrayList<color> colorList = new ArrayList<>();
 
         colorList.add(color.RED);

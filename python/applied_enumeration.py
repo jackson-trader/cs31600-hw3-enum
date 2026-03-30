@@ -49,20 +49,20 @@ class MainApplication:
 
                     if(damageNegated >= playerDamgeRolled):
 
-                        print(f"The COM Took no damge because of his dodge token")
+                        print(f"The COM took no damge because of his dodge token")
                         print(f"")
                         comDodgeToken = 0
 
                     else:
                         damageDoneWithNegation = abs(damageNegated - playerDamageRolled)
-                        print(f"The COM rolled a ", damageNegated, " damaged negation " , "you did ", damageDoneWithNegation)
+                        print(f"The COM rolled a", damageNegated, "damaged negation you did", damageDoneWithNegation)
                         print(f"")
                         comHealth -= damageDoneWithNegation
                         comDodgeToken = 0
                 else:
                     playerDamageRolled = random.randrange(10, 30)
                     comHealth -= playerDamageRolled
-                    print(f"You did ", playerDamageRolled, " damage")
+                    print(f"You did", playerDamageRolled, "damage")
                     print(f"")
 
             elif(playerTurn == 2):
@@ -82,7 +82,7 @@ class MainApplication:
                     else:
 
                         playerHealth += heal
-                        print(f"You healed ", heal, " health")
+                        print(f"You healed", heal, "health")
                         print(f"")
             
             elif(playerTurn == 3):
@@ -107,27 +107,27 @@ class MainApplication:
 
                     if(damageNegated >= comDamageRolled):
 
-                        print(f"The player took no damage becuase of his dodge token")
+                        print(f"The player took no damage because of his dodge token")
                         print(f"")
                         playerDodgeToken = 0
                     
                     else:
 
                         damageDoneWithNegation = abs(damageNegated - comDamageRolled)
-                        print(f"The Player roleld a ", damageNegated, " damaged negation COM did ", damageDoneWithNegation)
+                        print(f"The Player rolled a", damageNegated, "damaged negation COM did", damageDoneWithNegation)
                         playerHealth -= damageDoneWithNegation
                         playerDodgeToken = 0
                 else:
                     comDamageRolled = random.randrange(10,20)
                     playerHealth -= comDamageRolled
-                    print(f"The COM did ", comDamageRolled, " damge")
+                    print(f"The COM did", comDamageRolled, "damge")
                     print(f"")
 
             elif(computerTurn == 2):
 
                 if(comHealth >= 100):
 
-                    print(f"You cannoot healh passed 100")
+                    print(f"You cannot healh passed 100")
                     print(f"")
                 else:
 
@@ -140,14 +140,14 @@ class MainApplication:
                     else:
 
                         comHealth += heal
-                        print(f"The COM has healed ", heal, " health")
+                        print(f"The COM has healed", heal, "health")
                         print(f"")
 
             elif(computerTurn == 3):
 
                 if(comDodgeToken >= 1):
 
-                    print(f"The COM can only have one dodge toekn at a time")
+                    print(f"The COM can only have one dodge token at a time")
                     print(f"")
 
                 else:

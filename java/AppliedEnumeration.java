@@ -5,7 +5,7 @@ class AppliedEnumeration {
     public static enum GameConstants {
 
         PLAYER("Player", 100),
-        COM("Computer", 10)
+        COM("Computer", 100)
         ;
 
         private String name;
@@ -59,7 +59,7 @@ class AppliedEnumeration {
 
                 if(comDodgeToken >= 1) {
 
-                    damageNegated = dodgeChacne.nextInt(10, 20);
+                    damageNegated = dodgeChacne.nextInt(10, 21);
                     playerDamageRolled = damageChance.nextInt(10,31);
 
                     if(damageNegated >= playerDamageRolled){
@@ -70,7 +70,7 @@ class AppliedEnumeration {
                     } else {
 
                         damgeDoneWithNegation = Math.abs(damageNegated - playerDamageRolled);
-                        System.out.println("The COM rolled a " + damageNegated + " damaged negation " + "you did " + damgeDoneWithNegation);
+                        System.out.println("The COM rolled a " + damageNegated + " damaged negation you did " + damgeDoneWithNegation);
                         System.out.println();
                         GameConstants.COM.health -= damgeDoneWithNegation;
                         comDodgeToken = 0;
@@ -142,14 +142,14 @@ class AppliedEnumeration {
 
                     comDamageRolled = damageChance.nextInt(10, 31);
                     GameConstants.PLAYER.health -= comDamageRolled;
-                    System.out.println("The COM did " + comDamageRolled + " damage \n");
+                    System.out.println("The COM did " + comDamageRolled + " damage");
                     System.out.println();
                 }
 
             } else if(computerTurn == 2){
 
                 if(GameConstants.COM.health >= 100){
-                    System.out.println("You cannot heal passed 100 \n");
+                    System.out.println("You cannot heal passed 100");
                     System.out.println();
                 } else {
 
