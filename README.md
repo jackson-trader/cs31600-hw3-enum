@@ -11,4 +11,7 @@ CS 31600 - Group 5
 - Python
 
 ## AI Use Disclosure
-[ for later use ]
+- Clarifcation on Enums in Java and Python
+- Understanding serialization in Python
+- Understanding the assignment instructions
+- To quickly check if we met all requirements
